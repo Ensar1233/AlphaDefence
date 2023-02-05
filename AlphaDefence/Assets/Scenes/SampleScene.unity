@@ -135,8 +135,9 @@ GameObject:
   - component: {fileID: 143143583}
   - component: {fileID: 143143582}
   - component: {fileID: 143143584}
+  - component: {fileID: 143143585}
   m_Layer: 5
-  m_Name: Joyistic
+  m_Name: Joystick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -213,6 +214,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MovementRange: 100
   m_ControlPath: <Gamepad>/leftStick
+--- !u!114 &143143585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143143580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f077421f3adba5241a3db2328bdd0b50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 408473734}
+  setAngle: 55
+  turnSpeed: 1
 --- !u!1 &224152590
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,6 +369,7 @@ GameObject:
   - component: {fileID: 408473736}
   - component: {fileID: 408473737}
   - component: {fileID: 408473738}
+  - component: {fileID: 408473739}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -447,7 +464,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 408473733}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d597b3a4f4a3acb459f12565a0818146, type: 3}
   m_Name: 
@@ -455,6 +472,19 @@ MonoBehaviour:
   joistic: {fileID: 143143581}
   setAngle: 55
   turnSpeed: 0.08
+--- !u!114 &408473739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408473733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a2a8424b0e7a00408d4fd8c4b7fddf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _joystick: {fileID: 143143581}
 --- !u!1 &495902034
 GameObject:
   m_ObjectHideFlags: 0
@@ -1028,7 +1058,7 @@ GameObject:
   - component: {fileID: 1696655445}
   - component: {fileID: 1696655444}
   m_Layer: 0
-  m_Name: CM vcam1
+  m_Name: Isometric Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
