@@ -23,12 +23,10 @@ public class Joystick : MonoBehaviour
     {
         return IsometricController(player);
     }
-
     public Vector3 IsometricController(Transform player)
     {
-        direction = transform.position - beginPosition;// basildigi gibi 55 geliyor bu sorunu cöz.
-        
-        float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg + setAngle;
+        float angle = Tan2 + setAngle;
+
         player.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, angle, 0), turnSpeed);
         return player.forward;
 
@@ -40,5 +38,16 @@ public class Joystick : MonoBehaviour
 
         return move;
     }
+
+    public float Tan2
+    {
+        get
+        {
+            direction = transform.position - beginPosition;
+            float tan2 = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
+            return tan2;
+        }
+    }
+
 
 }

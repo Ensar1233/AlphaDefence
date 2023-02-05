@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
-        if(controller.IsPressed())
+        if (controller.IsPressed() && joystick.Tan2!=0)
             movement.Move(joystick.JoystickControl(transform),5);            
     }
 }
