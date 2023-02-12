@@ -43,8 +43,10 @@ public class Joystick : MonoBehaviour
     {
         get
         {
-            direction = transform.position - beginPosition;
-            float tan2 = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
+            beginPosition = Input.GetTouch(0).position;
+            direction = beginPosition - transform.position;
+
+            float tan2 = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;//ilk bastaki
             return tan2;
         }
     }

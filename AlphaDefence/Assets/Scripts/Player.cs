@@ -12,12 +12,16 @@ public class Player : MonoBehaviour
     void Start()
     {
         movement = new Movement(transform);
-        controller = new PController();
+        controller = new MobileController();
         joystick = _joystick.GetComponent<Joystick>();
     }
     void Update()
     {
-        if (controller.IsPressed() && joystick.Tan2!=0)
-            movement.Move(joystick.JoystickControl(transform),5);            
+        if (controller.IsJoystickPressed(joystick.transform))
+        {
+            movement.Move(joystick.JoystickControl(transform), 5);
+        }
     }
+
+    //(1/4)nk2 cot(pi/n)
 }
