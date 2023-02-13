@@ -23,5 +23,4 @@ public class Player : MonoBehaviour
         }
     }
 
-    //(1/4)nk2 cot(pi/n)
 }

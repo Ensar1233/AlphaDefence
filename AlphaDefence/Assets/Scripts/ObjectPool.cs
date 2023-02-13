@@ -2,25 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectPool : MonoBehaviour
+public abstract class ObjectPool:MonoBehaviour
 {
     public List<GameObject> inPool;
     public List<GameObject> outPool;
-    [SerializeField] private GameObject prefabObject;
-    [SerializeField] private int size;
+    [SerializeField] protected GameObject prefabObject;
+    [SerializeField] protected int size;
 
 
-    void Start()
-    {
-        inPool = new List<GameObject>();
-
-        GameObject obj;
-        for (int i = 0; i < size; i++)
-        {
-            obj = Instantiate(prefabObject, transform);
-            In(obj);
-        }
-    }
     public GameObject In(GameObject obj)
     {
         obj.SetActive(false);
