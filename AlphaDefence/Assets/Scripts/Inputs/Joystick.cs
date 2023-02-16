@@ -12,6 +12,8 @@ public class Joystick : MonoBehaviour
 
     private Vector3 direction;
     private Vector3 beginPosition;
+    private MoveDrag drag = new MoveDrag();
+    [SerializeField] CameraType.Type cameraType; 
 
     void Start()
     {
@@ -19,25 +21,23 @@ public class Joystick : MonoBehaviour
         beginPosition = transform.position;
     }
     
-    public Vector3 JoystickControl(Transform player)
-    {
-        return IsometricController(player);
-    }
-    public Vector3 IsometricController(Transform player)
+   
+    public void IsometricControllerr()
     {
         float angle = Tan2 + setAngle;
 
-        player.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, angle, 0), turnSpeed);
-        return player.forward;
-
+        _player.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, angle, 0), turnSpeed);
+        _player.position += _player.forward * 5 * Time.deltaTime;
     }
-    public Vector3 TPSController(Transform player)
+    public void TPSControllerr()
     {
-        Vector2 input = playerInput.actions["Move"].ReadValue<Vector2>();
-        Vector3 move = new Vector3(input.x, 0, input.y);
+        Vector2 dragPos = drag.Value();
 
-        return move;
+        Vector3 move = new Vector3(dragPos.x,0, dragPos.y);
+
+        _player.Translate(move * 10 * Time.deltaTime);
     }
+    
 
     public float Tan2
     {

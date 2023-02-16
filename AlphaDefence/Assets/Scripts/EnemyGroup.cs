@@ -25,7 +25,7 @@ public class EnemyGroup : MonoBehaviour
 
     IEnumerator Positioning()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(5);
 
         transform.localPosition = pin.Positioning();
         GameObject enemy;

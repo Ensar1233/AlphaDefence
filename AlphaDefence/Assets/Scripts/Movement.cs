@@ -9,7 +9,7 @@ public class Movement
     {
         this.transform = transform;
     }
-
+    
     public void Move(Vector3 dir,float speed)
     {
         transform.position += dir * speed * Time.deltaTime;

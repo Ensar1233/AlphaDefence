@@ -5,22 +5,36 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] Transform _joystick;
-
-    private Movement movement;
+    [SerializeField] Transform enemyPool;
     private Joystick joystick;
     private IController controller;
     void Start()
     {
-        movement = new Movement(transform);
         controller = new MobileController();
         joystick = _joystick.GetComponent<Joystick>();
     }
     void Update()
     {
+        if (enemyPool.GetComponent<ObjectPool>().outPool.Count > 0)
+        {
+            transform.forward = enemyPool.GetComponent<ObjectPool>().outPool[0].transform.position - transform.position;
+
+            Vector3 pos = transform.position;
+            pos.y = 1.35f;
+            transform.position = pos;
+        }
+        
         if (controller.IsJoystickPressed(joystick.transform))
         {
-            movement.Move(joystick.JoystickControl(transform), 5);
+            if (enemyPool.GetComponent<ObjectPool>().outPool.Count > 0)
+            {
+                joystick.TPSControllerr();
+            }
+            else 
+            {
+                joystick.IsometricControllerr();
+            }
         }
+        
     }
-
 }

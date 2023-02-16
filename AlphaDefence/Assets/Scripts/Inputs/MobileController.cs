@@ -15,14 +15,20 @@ public class MobileController : IController
 
         return Input.GetTouch(0).phase == TouchPhase.Began;
     }
+    public bool Drag()
+    {
 
+        return Input.GetTouch(0).phase == TouchPhase.Moved;
+    }
     public  bool IsJoystickPressed(Transform joystick)
     {
         if (IsPressed())
         {
-            if (Click()) joystick.transform.position = Input.GetTouch(0).position;
-
-            if (joystick.GetComponent<Joystick>().Tan2 != 0) return true;
+            if (Click()) 
+            {
+                joystick.transform.position = Input.GetTouch(0).position;
+            }
+           if (joystick.GetComponent<Joystick>().Tan2 != 0) return true;
 
         }
 
