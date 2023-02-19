@@ -12,13 +12,14 @@ public class Joystick : MonoBehaviour
 
     private Vector3 direction;
     private Vector3 beginPosition;
-    private MoveDrag drag = new MoveDrag();
+    private MoveDrag drag;
     [SerializeField] CameraType.Type cameraType; 
 
     void Start()
     {
         playerInput = _player.GetComponent<PlayerInput>();
         beginPosition = transform.position;
+        drag = new MoveDrag();
     }
     
    
@@ -34,15 +35,24 @@ public class Joystick : MonoBehaviour
         Vector2 dragPos = drag.Value();
 
         Vector3 move = new Vector3(dragPos.x,0, dragPos.y);
-
         _player.Translate(move * 10 * Time.deltaTime);
     }
-    
+            
+
+    public void IsJoystickPressed()
+    {
+        if (MobileController.Click())
+        {
+            transform.position = Input.GetTouch(0).position;
+        }
+    }
 
     public float Tan2
     {
         get
         {
+            IsJoystickPressed();
+
             beginPosition = Input.GetTouch(0).position;
             direction = beginPosition - transform.position;
 

@@ -6,35 +6,33 @@ public class Player : MonoBehaviour
 {
     [SerializeField] Transform _joystick;
     [SerializeField] Transform enemyPool;
+
     private Joystick joystick;
-    private IController controller;
     void Start()
     {
-        controller = new MobileController();
         joystick = _joystick.GetComponent<Joystick>();
     }
+    // Bir tane AllObjects sinifinin icinde AllEnemies sinifinin 0 dan büyük mü esitmi olacaginin kontrolü yapilacak.
+    // Kontrolden sonra ChangeCamera sinifi olusturalacak.
+    // ChangeController Sinifi , yapilan kontrol ile camera input kontrollerini degistirecek. 
     void Update()
     {
-        if (enemyPool.GetComponent<ObjectPool>().outPool.Count > 0)
+        if (MobileController.IsPressed())
         {
-            transform.forward = enemyPool.GetComponent<ObjectPool>().outPool[0].transform.position - transform.position;
-
-            Vector3 pos = transform.position;
-            pos.y = 1.35f;
-            transform.position = pos;
-        }
-        
-        if (controller.IsJoystickPressed(joystick.transform))
-        {
-            if (enemyPool.GetComponent<ObjectPool>().outPool.Count > 0)
+            if (AllObjects.AllEnemies.Count > 0)
             {
+                transform.forward = AllObjects.AllEnemies[0].transform.position - transform.position;
                 joystick.TPSControllerr();
+
+                Vector3 pos = transform.position;
+                pos.y = 1.35f;
+                transform.position = pos;
             }
-            else 
+            else if (joystick.Tan2 != 0 && AllObjects.AllEnemies.Count== 0)
             {
                 joystick.IsometricControllerr();
             }
+
         }
-        
     }
 }

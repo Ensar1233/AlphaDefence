@@ -2,37 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MobileController : IController
+public class MobileController
 {
-
-    public bool IsPressed()
+    private static Vector2 beginPos;
+    public static bool IsPressed()
     {
         return Input.touchCount > 0;
     }
     
-    public bool Click()
+    public static bool Click()
     {
 
         return Input.GetTouch(0).phase == TouchPhase.Began;
     }
-    public bool Drag()
-    {
-
-        return Input.GetTouch(0).phase == TouchPhase.Moved;
-    }
-    public  bool IsJoystickPressed(Transform joystick)
-    {
-        if (IsPressed())
-        {
-            if (Click()) 
-            {
-                joystick.transform.position = Input.GetTouch(0).position;
-            }
-           if (joystick.GetComponent<Joystick>().Tan2 != 0) return true;
-
-        }
-
-        return false;
-    }
-
 }

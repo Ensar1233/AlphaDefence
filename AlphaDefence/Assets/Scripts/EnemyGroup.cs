@@ -34,6 +34,7 @@ public class EnemyGroup : MonoBehaviour
         {
             enemy = t.Out(Random.Range(0, t.inPool.Count));
             enemy.transform.position = transform.position;
+            AllObjects.AllEnemies.Add(enemy);
 
             enemy.transform.position = CircularArray(enemy.transform.position, i);
         }

@@ -5,22 +5,18 @@ using UnityEngine;
 public class MoveDrag
 {
 
-    private MobileController controller = new MobileController();
-
     private Vector2 beginPosition;
     private Vector2 direct;
-
-    public Vector2 Value()//telde test edilecek.
+    Transform joystick;
+    //global beginPos Al;
+    public Vector2 Value()
     {
-        if (controller.IsPressed())
+        if (MobileController.Click())
         {
-            if (controller.Click())
-            {
-                beginPosition = Input.GetTouch(0).position;
-            }
-            direct = Input.GetTouch(0).position - beginPosition;
-            return direct.normalized;
+            beginPosition = Input.GetTouch(0).position;
         }
-        return new Vector2(0, 0).normalized;
+            direct = Input.GetTouch(0).position -beginPosition;
+
+        return direct.normalized;
     }
 }
