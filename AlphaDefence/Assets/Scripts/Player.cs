@@ -1,25 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] Transform _joystick;
     [SerializeField] Transform enemyPool;
-
+    [SerializeField] float turnSpeed;
     private Joystick joystick;
     void Start()
     {
         joystick = _joystick.GetComponent<Joystick>();
+
+        //Camera.main.GetComponent<CinemachineBrain>().IsLive
     }
-    // Bir tane AllObjects sinifinin icinde AllEnemies sinifinin 0 dan büyük mü esitmi olacaginin kontrolü yapilacak.
-    // Kontrolden sonra ChangeCamera sinifi olusturalacak.
-    // ChangeController Sinifi , yapilan kontrol ile camera input kontrollerini degistirecek. 
     void Update()
     {
+        Movement();
+    }
+
+    private void Movement()
+    {
+        // buranin basmadan da forwarda kitlenmesi gerek.
         if (MobileController.IsPressed())
         {
-            if (AllObjects.AllEnemies.Count > 0)
+            if (AllObjects.AreThereEnemies())
             {
                 transform.forward = AllObjects.AllEnemies[0].transform.position - transform.position;
                 joystick.TPSControllerr();
@@ -28,11 +34,12 @@ public class Player : MonoBehaviour
                 pos.y = 1.35f;
                 transform.position = pos;
             }
-            else if (joystick.Tan2 != 0 && AllObjects.AllEnemies.Count== 0)
+            else if (joystick.Tan2 != 0 && !AllObjects.AreThereEnemies())
             {
                 joystick.IsometricControllerr();
             }
 
         }
     }
+
 }

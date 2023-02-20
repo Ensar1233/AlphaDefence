@@ -16,7 +16,7 @@ public class EnemyGroup : MonoBehaviour
 
     void Update()
     {
-        if (enemyPool.GetComponent<ObjectPool>().outPool.Count <= 0 && coroutine==null)
+        if (!AllObjects.AreThereEnemies() && coroutine==null)
         {
             coroutine = StartCoroutine(Positioning());
         }
@@ -38,6 +38,8 @@ public class EnemyGroup : MonoBehaviour
 
             enemy.transform.position = CircularArray(enemy.transform.position, i);
         }
+        coroutine = null;
+
         yield return null;
     }
 

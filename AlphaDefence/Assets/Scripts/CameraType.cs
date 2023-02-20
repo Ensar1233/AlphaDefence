@@ -1,17 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 public class CameraType : MonoBehaviour
 {
-    [SerializeField] private GameObject enemyPool;
+    
+    //[SerializeField] private GameObject enemyPool;
     [SerializeField] private GameObject isometricCam;
     [SerializeField] private GameObject tpsCam;
     public enum Type {Isometric,TPS };
 
     void Update()
     {
-        if (enemyPool.GetComponent<ObjectPool>().outPool.Count > 0)
+        if (AllObjects.AreThereEnemies())
         {
             isometricCam.SetActive(false);
             tpsCam.SetActive(true);
@@ -21,6 +23,7 @@ public class CameraType : MonoBehaviour
             isometricCam.SetActive(true);
             tpsCam.SetActive(false);
         }
+
     }
 
 

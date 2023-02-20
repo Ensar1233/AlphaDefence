@@ -8,7 +8,8 @@ public class Farmer : Enemy
 
     void Start()
     {
-       agent = GetComponent<NavMeshAgent>();     
+       agent = GetComponent<NavMeshAgent>();
+        currentHealth = health;
     }
     void Update()
     {
