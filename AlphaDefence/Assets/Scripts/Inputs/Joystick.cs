@@ -7,7 +7,7 @@ public class Joystick : MonoBehaviour
     [SerializeField] private Transform _player;
     [SerializeField] private float setAngle;
     [SerializeField] private float turnSpeed;
-
+    [SerializeField] private float speed;
     private PlayerInput playerInput;
 
     private Vector3 direction;
@@ -28,14 +28,14 @@ public class Joystick : MonoBehaviour
             float angle = Tan2 + setAngle;
 
             _player.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, angle, 0), turnSpeed);
-            _player.position += _player.forward * 5 * Time.deltaTime;
+            _player.position += _player.forward * speed * Time.deltaTime;
     }
     public void TPSControllerr()
     {
             Vector2 dragPos = drag.Value();
 
             Vector3 move = new Vector3(dragPos.x, 0, dragPos.y);
-            _player.Translate(move * 10 * Time.deltaTime);
+            _player.Translate(move * speed * Time.deltaTime);
     }
             
 

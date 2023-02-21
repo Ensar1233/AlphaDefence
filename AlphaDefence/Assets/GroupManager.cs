@@ -12,18 +12,47 @@ public class GroupManager : MonoBehaviour
     [SerializeField] private int gMinSize;
     [SerializeField] private int gMaxSize;
 
+    [SerializeField] private List<GameObject> enemyGroups;
 
-    public float Time
+    private Coroutine coroutine;
+    void Update()
     {
-        get
+        if (!AllObjects.AreThereEnemies() && coroutine == null)
         {
-            return RandomTime(minTime, maxTime);
+            coroutine = StartCoroutine(Positioning());
         }
     }
 
-    public static float RandomTime(float min,float max)
+     IEnumerator Positioning()
     {
-        return Random.Range(min, max);
+        yield return new WaitForSeconds(RandomTime);
         
+        for(int i = 0; i < RandomGroupSize; i++)
+            enemyGroups[i].SetActive(true);
+
+        coroutine = null;
+
+        yield return null;
     }
+
+    public float RandomTime
+    {
+        get
+        {
+            return Random.Range(minTime, maxTime);
+        }
+
+    }
+    public float RandomGroupSize
+    {
+        get
+        {
+            if(gMaxSize>= enemyGroups.Count)
+                gMaxSize = enemyGroups.Count;
+
+            return Random.Range(gMinSize, gMaxSize+1);
+        }
+    }
+
+
 }

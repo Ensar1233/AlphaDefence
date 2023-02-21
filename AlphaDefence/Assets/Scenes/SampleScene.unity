@@ -229,6 +229,7 @@ MonoBehaviour:
   _player: {fileID: 408473734}
   setAngle: 55
   turnSpeed: 2
+  speed: 10
   cameraType: 0
 --- !u!1 &224152590
 GameObject:
@@ -854,7 +855,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1487889120
 Transform:
   m_ObjectHideFlags: 0
@@ -882,9 +883,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPool: {fileID: 566078485}
-  groupManager: {fileID: 1522195604}
-  minTime: 2
-  maxTime: 7
   minSize: 5
   maxSize: 10
 --- !u!1 &1522195604
@@ -932,8 +930,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minTime: 5
   maxTime: 10
-  gMinSize: 0
-  gMaxSize: 0
+  gMinSize: 1
+  gMaxSize: 2
+  enemyGroups:
+  - {fileID: 1739793178}
+  - {fileID: 1487889119}
 --- !u!1 &1569060558
 GameObject:
   m_ObjectHideFlags: 0
@@ -1204,7 +1205,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1739793179
 Transform:
   m_ObjectHideFlags: 0
@@ -1232,9 +1233,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPool: {fileID: 566078485}
-  groupManager: {fileID: 1522195604}
-  minTime: 2
-  maxTime: 7
   minSize: 5
   maxSize: 10
 --- !u!1 &2012607560
@@ -1399,7 +1397,7 @@ MonoBehaviour:
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 0
   m_LookaheadIgnoreY: 0
-  m_XDamping: 1
+  m_XDamping: 0.25
   m_YDamping: 1
   m_ZDamping: 1
   m_TargetMovementOnly: 1
