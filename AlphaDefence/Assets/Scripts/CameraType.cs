@@ -6,13 +6,20 @@ using UnityEngine;
 public class CameraType : MonoBehaviour
 {
     
-    //[SerializeField] private GameObject enemyPool;
     [SerializeField] private GameObject isometricCam;
     [SerializeField] private GameObject tpsCam;
     public enum Type {Isometric,TPS };
 
+    private CinemachineBrain cb;
+    private CinemachineVirtualCamera cvc;
+    void Start()
+    {
+        cb = Camera.main.GetComponent<CinemachineBrain>();
+        cvc = tpsCam.GetComponent<CinemachineVirtualCamera>();
+    }
     void Update()
     {
+
         if (AllObjects.AreThereEnemies())
         {
             isometricCam.SetActive(false);
@@ -23,8 +30,13 @@ public class CameraType : MonoBehaviour
             isometricCam.SetActive(true);
             tpsCam.SetActive(false);
         }
-
     }
-
+    public bool TPSCam
+    {
+        get
+        {
+            return cb.IsLive(cvc);
+        }
+    }
 
 }

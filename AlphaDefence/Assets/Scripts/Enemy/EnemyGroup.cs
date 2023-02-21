@@ -5,13 +5,21 @@ using UnityEngine;
 public class EnemyGroup : MonoBehaviour
 {
     [SerializeField] private GameObject enemyPool;
-    [SerializeField] private int size;
+    [SerializeField] private GameObject groupManager;
+    // Group Manager enemyGroup objeleri pasif hale getirilecek.
+    // Pasif hale getirilien objeler group managerde belirtilen surede aktif hale getirilecektir.
+    private int size;
+    [Header("Spawn size")]
+    public int minSize;
+    public int maxSize;
+
     private Coroutine coroutine;
     private PositioningInCircle pin;
-
+    private GroupManager sGroupManager;
     void Start()
     {
         pin = new PositioningInCircle(transform.parent.GetComponent<SphereCollider>().radius);
+        sGroupManager = groupManager.GetComponent<GroupManager>();
     }
 
     void Update()
@@ -20,12 +28,12 @@ public class EnemyGroup : MonoBehaviour
         {
             coroutine = StartCoroutine(Positioning());
         }
-
     }
 
     IEnumerator Positioning()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(sGroupManager.Time);
+        size = Random.Range(minSize, maxSize);
 
         transform.localPosition = pin.Positioning();
         GameObject enemy;

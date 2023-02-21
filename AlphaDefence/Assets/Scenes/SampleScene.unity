@@ -260,7 +260,7 @@ Transform:
   - {fileID: 1646166749}
   - {fileID: 2012607561}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &408473733 stripped
 GameObject:
@@ -365,7 +365,7 @@ RectTransform:
   m_Children:
   - {fileID: 143143581}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -446,7 +446,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &566078487
 MonoBehaviour:
@@ -463,56 +463,8 @@ MonoBehaviour:
   inPool: []
   outPool: []
   prefabObject: {fileID: 3021547772789724106, guid: a602d48a19b107e4994657c34dddc2fa, type: 3}
-  size: 15
+  size: 30
   target: {fileID: 408473733}
---- !u!1 &682294026
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 682294028}
-  - component: {fileID: 682294027}
-  m_Layer: 0
-  m_Name: EnemyPool (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &682294027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 682294026}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13d1259cc741806449ff68ab74ba24b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inPool: []
-  outPool: []
-  prefabObject: {fileID: 3021547772789724106, guid: a602d48a19b107e4994657c34dddc2fa, type: 3}
-  size: 10
-  target: {fileID: 408473733}
---- !u!4 &682294028
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 682294026}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -902,7 +854,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1487889120
 Transform:
   m_ObjectHideFlags: 0
@@ -929,8 +881,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 696049158f6b74846b33bf12c59b3839, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPool: {fileID: 682294026}
-  size: 5
+  enemyPool: {fileID: 566078485}
+  groupManager: {fileID: 1522195604}
+  minTime: 2
+  maxTime: 7
+  minSize: 5
+  maxSize: 10
+--- !u!1 &1522195604
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1522195605}
+  - component: {fileID: 1522195606}
+  m_Layer: 0
+  m_Name: GroupManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1522195605
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522195604}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1522195606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522195604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26e411f671b0c1149b0ca5b7508e81e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minTime: 5
+  maxTime: 10
+  gMinSize: 0
+  gMaxSize: 0
 --- !u!1 &1569060558
 GameObject:
   m_ObjectHideFlags: 0
@@ -960,7 +963,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b579f9c6951ec34eac16b067a81b38a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPool: {fileID: 566078485}
   isometricCam: {fileID: 1696655443}
   tpsCam: {fileID: 2060321075}
 --- !u!4 &1569060560
@@ -975,7 +977,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1646166745
 GameObject:
@@ -1137,7 +1139,7 @@ Transform:
   m_Children:
   - {fileID: 2020178440}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1698276035
 GameObject:
@@ -1230,7 +1232,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPool: {fileID: 566078485}
-  size: 4
+  groupManager: {fileID: 1522195604}
+  minTime: 2
+  maxTime: 7
+  minSize: 5
+  maxSize: 10
 --- !u!1 &2012607560
 GameObject:
   m_ObjectHideFlags: 0
@@ -1520,7 +1526,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4160722786094338213, guid: c8a402b42807b5040b15dbf31270958d, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4160722786094338213, guid: c8a402b42807b5040b15dbf31270958d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1580,8 +1586,16 @@ PrefabInstance:
       objectReference: {fileID: 566078486}
     - target: {fileID: 4160722786094338216, guid: c8a402b42807b5040b15dbf31270958d, type: 3}
       propertyPath: turnSpeed
-      value: 0.05
+      value: 0.006
       objectReference: {fileID: 0}
+    - target: {fileID: 4160722786094338216, guid: c8a402b42807b5040b15dbf31270958d, type: 3}
+      propertyPath: cameraType
+      value: 
+      objectReference: {fileID: 1569060558}
+    - target: {fileID: 4160722786094338216, guid: c8a402b42807b5040b15dbf31270958d, type: 3}
+      propertyPath: cameraManager
+      value: 
+      objectReference: {fileID: 1569060558}
     - target: {fileID: 4160722786094338219, guid: c8a402b42807b5040b15dbf31270958d, type: 3}
       propertyPath: m_IsTrigger
       value: 0

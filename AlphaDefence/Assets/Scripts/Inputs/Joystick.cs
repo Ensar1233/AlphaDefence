@@ -25,17 +25,17 @@ public class Joystick : MonoBehaviour
    
     public void IsometricControllerr()
     {
-        float angle = Tan2 + setAngle;
+            float angle = Tan2 + setAngle;
 
-        _player.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, angle, 0), turnSpeed);
-        _player.position += _player.forward * 5 * Time.deltaTime;
+            _player.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, angle, 0), turnSpeed);
+            _player.position += _player.forward * 5 * Time.deltaTime;
     }
     public void TPSControllerr()
     {
-        Vector2 dragPos = drag.Value();
+            Vector2 dragPos = drag.Value();
 
-        Vector3 move = new Vector3(dragPos.x,0, dragPos.y);
-        _player.Translate(move * 10 * Time.deltaTime);
+            Vector3 move = new Vector3(dragPos.x, 0, dragPos.y);
+            _player.Translate(move * 10 * Time.deltaTime);
     }
             
 
