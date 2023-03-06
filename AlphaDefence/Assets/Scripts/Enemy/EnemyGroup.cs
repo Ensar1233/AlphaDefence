@@ -10,11 +10,7 @@ public class EnemyGroup : MonoBehaviour
     public int minSize;
     public int maxSize;
 
-    private PositioningInCircle pin;
-    void Awake()
-    {
-        pin = new PositioningInCircle(transform.parent.GetComponent<SphereCollider>().radius);
-    }
+    public PositioningInCircle pin;
     
     private void OnEnable()
     {
@@ -24,7 +20,6 @@ public class EnemyGroup : MonoBehaviour
     {
         size = Random.Range(minSize, maxSize);
 
-        transform.localPosition = pin.Positioning();
         GameObject enemy;
         ObjectPool t = enemyPool.GetComponent<ObjectPool>();//EnemyPool
         for (int i = 0; i < size; i++)

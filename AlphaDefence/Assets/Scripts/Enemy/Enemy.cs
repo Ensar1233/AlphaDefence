@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class Enemy : MonoBehaviour
 {
     [SerializeField] protected float health;
+    [SerializeField] protected float damage;
     protected float currentHealth;
     public GameObject target;
 
@@ -24,6 +25,13 @@ public abstract class Enemy : MonoBehaviour
                 health = currentHealth;
             }
             health -= value;
+        }
+    }
+    public float Damage
+    {
+        get
+        {
+            return damage;
         }
     }
 }

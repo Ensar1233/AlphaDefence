@@ -5,10 +5,18 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] Transform _joystick;
     [SerializeField] Transform enemyPool;
+    [Header("Managers")]
     [SerializeField] GameObject cameraManager;
+    [Header("Movement")]
     [SerializeField] float turnSpeed;
+    [Header("Strengthening")]
+    public List<GameObject> strengthenings;
+
+    public float health = 100;
+    public float damage = 100;
 
     private Joystick joystick;
     private CameraType camType;
@@ -40,6 +48,31 @@ public class Player : MonoBehaviour
             if(MobileController.IsPressed() && !camType.TPSCam) if(joystick.Tan2 != 0) joystick.IsometricControllerr();
         }
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<Enemy>())
+        {
+            if (strengthenings.Count == 0)
+            {
+                health -= other.GetComponent<Enemy>().Damage;
+                if (health <= 0)
+                {
+                    gameObject.SetActive(false);
+                }
+            }
+            else
+            {
+                other.GetComponent<Enemy>().Health = damage;
+                strengthenings.Remove(strengthenings[0]);
+            }
+        }
+        if (other.GetComponent<Strengthening>())
+        {
+            strengthenings.Add(other.gameObject);
+            other.transform.parent.GetComponent<ObjectPool>().In(other.gameObject);
+        }
     }
 
 }

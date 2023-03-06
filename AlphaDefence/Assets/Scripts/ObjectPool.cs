@@ -7,6 +7,7 @@ public abstract class ObjectPool:MonoBehaviour
     public List<GameObject> inPool;
     public List<GameObject> outPool;
     [SerializeField] protected GameObject prefabObject;
+
     [SerializeField] protected int size;
 
 
